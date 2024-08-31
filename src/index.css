@@ -22,5 +22,9 @@
 }
 
 body {
-    background: #0C1015;
+    background: black;
+}
+
+* {
+    scroll-behavior: smooth;
 }
