@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { Pricing_Data } from "../../../DummyData/constant";
 import InputFieldComponent from "./InputFieldComponent";
 import { PricingCardComponent } from "./PricingCardComponent";
 
-interface ConfigureProps {}
-export function ConfigureStep({}: ConfigureProps) {
+export function ConfigureStep() {
+  const [selectedPrice, setSelectedPrice] = useState<string | null>("Micro");
+
   return (
     <div className="border border-asBorderGray p-8 rounded-lg font-Inter">
       <div className="flex gap-2 flex-col">
@@ -35,11 +37,13 @@ export function ConfigureStep({}: ConfigureProps) {
             {Pricing_Data?.map((priceItem, index) => {
               return (
                 <PricingCardComponent
+                  key={index}
                   priceName={priceItem.priceName}
                   cpuUnits={priceItem.cpuUnits}
                   ramUnits={priceItem.ramUnit}
                   price={priceItem.price}
-                  key={index}
+                  isSelected={selectedPrice === priceItem.priceName}
+                  onSelect={() => setSelectedPrice(priceItem.priceName)}
                 />
               );
             })}

@@ -3,6 +3,8 @@ interface PricingCardProps {
   cpuUnits: number;
   ramUnits: number;
   price: number;
+  isSelected: boolean;
+  onSelect: () => void;
 }
 
 export function PricingCardComponent({
@@ -10,9 +12,15 @@ export function PricingCardComponent({
   cpuUnits,
   ramUnits,
   price,
+  isSelected,
+  onSelect,
 }: PricingCardProps) {
   return (
-    <div className="flex flex-col gap-2 px-6 py-4 font-Inter border border-asBorderGray rounded-md">
+    <div
+      className={`flex flex-col gap-2 px-6 py-4 font-Inter border rounded-md cursor-pointer
+     ${isSelected ? "border-asBlue" : "border-asBorderGray"}`}
+      onClick={onSelect}
+    >
       <div
         className={`py-1 px-2 w-fit rounded-md text-xs border ${
           priceName === "Micro"
