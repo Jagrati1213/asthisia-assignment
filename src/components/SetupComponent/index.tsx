@@ -7,7 +7,7 @@ import { StepComponent } from "./StepComponent";
 export function SetupComponent() {
   const allSetupSteps = ["Configure Github", "Configure Deployment", "Go Live"];
   const totalSteps = allSetupSteps.length;
-  const [activeStep, setActiveStep] = useState<number>(2);
+  const [activeStep] = useState<number>(2);
 
   // Function to determine step status
   const getStepStatus = (stepNumber: number) => {
