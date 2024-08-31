@@ -1,18 +1,16 @@
-import { useState } from "react";
-
 interface InputFieldProps {
   fieldName: string;
-  fieldValue: string;
+  fieldValue: string | number;
   fieldType?: string;
+  onChange: (value: string) => void;
 }
 
 export default function InputFieldComponent({
   fieldName,
   fieldValue,
   fieldType = "text",
+  onChange,
 }: InputFieldProps) {
-  const [inputValue, setInputValue] = useState(fieldValue);
-
   return (
     <div className="flex flex-col gap-2">
       <label className="font-Inter text-sm font-normal text-asLightGray">
@@ -20,8 +18,8 @@ export default function InputFieldComponent({
       </label>
       {fieldName === "Environment Variables" ? (
         <textarea
-          value={inputValue}
-          onChange={(event) => setInputValue(event.target.value)}
+          value={fieldValue}
+          onChange={(event) => onChange(event.target.value)}
           className="text-white bg-transparent border border-asInputBorderGray p-3 rounded-md active:border-asBorderGray resize-none"
           rows={4}
           draggable={false}
@@ -29,8 +27,8 @@ export default function InputFieldComponent({
       ) : (
         <input
           type={fieldType}
-          value={inputValue}
-          onChange={(event) => setInputValue(event.target.value)}
+          value={fieldValue}
+          onChange={(event) => onChange(event.target.value)}
           className="text-white bg-transparent border border-asInputBorderGray p-3 rounded-md active:border-asBorderGray no-arrows"
         />
       )}
