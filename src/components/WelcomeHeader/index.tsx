@@ -5,7 +5,7 @@ interface WelcomeProps {
 }
 export function WelcomeHeader({ userName }: WelcomeProps) {
   return (
-    <div className="w-full flex justify-between items-center border-b border-asBorderGray px-8 py-4">
+    <div className="w-full flex justify-between items-center border-b border-asBorderGray px-8 py-4 h-20">
       <div>
         <h1 className="text-3xl font-medium font-Inter">Welcome, {userName}</h1>
       </div>
